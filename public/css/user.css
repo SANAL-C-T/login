@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+   background-image: url("/images/user.jpeg");
+   background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#a{
+    border: 1px solid rgb(10, 10, 10);
+    background-color: rgba(116, 243, 235, 0.637)
+    
+}
+.btn.btn-success {
+    padding: 0.2em 4em;
+    margin-top: 2%;
+  }
+
+  
+  .center-div {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input{width:100%;}
+
+a{
+    color: rgb(2, 0, 0);
+
+
+  }

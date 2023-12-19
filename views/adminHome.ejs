@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ADMIN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-success" href="/add">Add new user</a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="d-flex" action="/search" method="get">
+                            <input class="form-control me-2" type="search" name="search"  placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-warning" type="submit">Search</button>
+                        </form>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-danger" href="/adminLogOut">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">SL.NO</th>
+                <th scope="col">NAME</th>
+                <th scope="col">EMAIL ID</th>
+                <th scope="col">PHONE NUMBER</th>
+                <th scope="col">EDIT</th>
+                <th scope="col">DELETE</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (userr.length > 0) { %>
+                <% for (let i = 0; i < userr.length; i++) { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= userr[i].name %></td>
+                        <td><%= userr[i].email %></td>
+                        <td><%= userr[i].phone %></td>
+                        <td><a class="edit" href="/edit?id=<%-userr[i]._id%>">Edit</a></td>
+                        <td><a href="/delete?id=<%-userr[i]._id%>">Delete</a></td>
+                        <td></td>
+                    </tr>
+                <% } %>
+            <% } else { %>
+                <tr>
+                    <td colspan="7">User not found</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>
